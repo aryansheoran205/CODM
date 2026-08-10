@@ -1,0 +1,40 @@
+{{template "base" .}}
+
+{{define "title"}}Team Up{{end}}
+
+{{define "body"}}
+<div class="page-header">
+    <h2>Find a Squad</h2>
+    <p>Looking for teammates for BR or Ranked MP? Drop a message here.</p>
+</div>
+
+<div class="chat-board">
+    <!-- Chat dikhane ka Box -->
+    <div class="chat-messages" style="height: 400px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; margin-bottom: 15px;">
+        
+        <!-- GO TEMPLATE LOOP: Database se aayi list yahan render hogi -->
+        {{range .}}
+            <div class="msg" style="margin-bottom: 8px;">
+                <span class="user" style="font-weight: bold; color: #007bff;">{{.Username}}:</span> 
+                {{.Message}}
+            </div>
+        {{else}}
+            <div class="msg">
+                <span class="user" style="font-weight: bold; color: #555;">System:</span> 
+                Abhi tak koi message nahi aaya. Be the first to start the conversation!
+            </div>
+        {{end}}
+
+    </div>
+
+    <!-- Chat bhejne ka Form -->
+    <form action="/chat/send" method="POST" class="chat-input-area">
+        <input type="text" name="message" placeholder="e.g. Need 2 players for Grand Master lobby..." required style="width: 80%; padding: 10px;">
+        
+        <!-- YEH NAYI LINE ADD KI HAI: Backend ko batane ke liye ki room "teamup" hai -->
+        <input type="hidden" name="room" value="teamup">
+        
+        <button type="submit" class="btn" style="padding: 10px 20px;">Send</button>
+    </form>
+</div>
+{{end}}

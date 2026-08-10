@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}Report Bug{{end}}
+{{define "body"}}
+<div class="page-header">
+    <h2>Report a Bug</h2>
+    <p>Found a glitch? Tell us what happened.</p>
+</div>
+<div class="form-container">
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+            <label>Description</label>
+            <textarea placeholder="Describe the issue in detail..." rows="5" required></textarea>
+        </div>
+        <div class="input-group">
+            <label>Screenshot (Optional)</label>
+            <input type="file" accept="image/*">
+        </div>
+        <button type="submit" class="btn">Submit Report</button>
+    </form>
+</div>
+{{end}}

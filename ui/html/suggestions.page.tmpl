@@ -1,0 +1,17 @@
+{{template "base" .}}
+{{define "title"}}Suggestions{{end}}
+{{define "body"}}
+<div class="page-header">
+    <h2>Suggestions / Feedback</h2>
+    <p>Got an idea to make CODM Hub better? Let us know!</p>
+</div>
+<div class="form-container">
+    <form action="#" method="POST">
+        <div class="input-group">
+            <label>Your Idea</label>
+            <textarea placeholder="I think we should add a feature that..." rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Submit Feedback</button>
+    </form>
+</div>
+{{end}}

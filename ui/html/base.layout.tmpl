@@ -1,0 +1,49 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>{{block "title" .}}CODM Hub{{end}}</title>
+    <link rel='stylesheet' href='/static/css/main.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href='/'>CODM <span>HUB</span></a></h1>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="section-title">Main Menu</div>
+            <a href="/">Home</a>
+            <a href="/gunsmith">Gunsmith</a>
+            <a href="/events">Events</a>
+            <a href="/team-up">Team Up</a>
+            
+            <div class="section-title" style="margin-top: 20px;">Support</div>
+            <a href="/report-bug">Report Bug</a>
+            <a href="/report-player">Report Player</a>
+            <a href="/suggestions">Suggestions</a>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="/auth/google" class="login-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; background: #fff; color: #000; padding: 12px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 1rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" width="20">
+                Login with Google
+            </a>
+            <a href="/profile" class="profile-btn">👤 My Profile</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Right Side -->
+    <div class="main-wrapper">
+        <main class="content">
+            {{block "body" .}}
+                <p>Loading...</p>
+            {{end}}
+        </main>
+    </div>
+</body>
+</html>
+{{end}}

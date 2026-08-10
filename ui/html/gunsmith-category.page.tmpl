@@ -1,0 +1,99 @@
+{{template "base" .}}
+
+{{define "title"}}{{.CategoryName}} Loadouts{{end}}
+
+{{define "body"}}
+<style>
+    .category-container { max-width: 1200px; margin: 0 auto; padding: 20px; color: #fff; }
+    .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .header-flex h2 { color: #f39c12; text-transform: uppercase; margin: 0; letter-spacing: 2px; }
+    .btn-back { color: #888; text-decoration: none; transition: 0.3s; font-weight: bold; }
+    .btn-back:hover { color: #f39c12; }
+    
+    .action-panel { background: #1a1a1a; border: 1px solid #333; padding: 25px; border-radius: 10px; margin-bottom: 30px; display: flex; gap: 30px; flex-wrap: wrap;}
+    .form-group { flex: 1; min-width: 300px; }
+    .form-group h4 { margin-top: 0; color: #fff; font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;}
+    
+    input[type="text"], input[type="file"] { 
+        width: 100%; padding: 12px; background: #0d0d0d; border: 1px solid #444; 
+        color: #fff; border-radius: 5px; margin-bottom: 10px; box-sizing: border-box;
+    }
+    input[type="text"]:focus { border-color: #f39c12; outline: none; }
+    
+    button { 
+        background: #f39c12; color: #000; border: none; padding: 12px 25px; 
+        font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s;
+        text-transform: uppercase;
+    }
+    button:hover { background: #e67e22; transform: translateY(-2px); }
+
+    .loadout-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+    .loadout-card { 
+        background: #1a1a1a; border: 1px solid #333; border-radius: 10px; 
+        overflow: hidden; transition: transform 0.3s ease;
+    }
+    .loadout-card:hover { border-color: #f39c12; transform: translateY(-5px); }
+    .loadout-card img { width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid #333;}
+    .loadout-info { padding: 15px; text-align: center; }
+    .loadout-info h3 { margin: 0; color: #fff; font-size: 1.3rem; }
+    
+    .empty-state { text-align: center; color: #888; padding: 60px; grid-column: 1 / -1; border: 1px dashed #444; border-radius: 10px; }
+    .empty-state h3 { color: #f39c12; }
+</style>
+
+<div class="category-container">
+    <!-- Header -->
+    <div class="header-flex">
+        <h2>{{.CategoryName}} Loadouts</h2>
+        <a href="/gunsmith" class="btn-back">← Back to Categories</a>
+    </div>
+
+    <!-- Search & Upload Panel -->
+    <div class="action-panel">
+        
+        <!-- Search Section -->
+        <div class="form-group">
+            <h4>Search Weapon</h4>
+            <form action="" method="GET" style="display:flex; gap:10px;">
+                <input type="text" name="q" placeholder="E.g. Kilo 141, AK-47..." value="{{.SearchQuery}}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="form-group">
+            <h4>Share Your Build</h4>
+            <form action="/gunsmith/upload" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="category" value="{{.CategoryName}}">
+                <input type="text" name="title" placeholder="Enter Weapon Name (e.g. M4 - Beam)" required>
+                <div style="display:flex; gap:10px;">
+                    <input type="file" name="loadout_image" accept="image/*" required style="margin-bottom:0;">
+                    <button type="submit">Upload</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <hr style="border-color: #333; margin-bottom: 30px;">
+
+    <!-- Loadouts Display Grid -->
+    <div class="loadout-grid">
+        {{if .Loadouts}}
+            {{range .Loadouts}}
+            <div class="loadout-card">
+                <img src="{{.ImagePath}}" alt="{{.Title}}">
+                <div class="loadout-info">
+                    <h3>{{.Title}}</h3>
+                </div>
+            </div>
+            {{end}}
+        {{else}}
+            <div class="empty-state">
+                <h3>No loadouts found.</h3>
+                <p>Be the first to share a legendary {{.CategoryName}} build!</p>
+            </div>
+        {{end}}
+    </div>
+</div>
+{{end}}

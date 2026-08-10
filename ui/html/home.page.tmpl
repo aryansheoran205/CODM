@@ -1,0 +1,41 @@
+{{template "base" .}}
+
+{{define "title"}}Global Chat{{end}}
+
+{{define "body"}}
+<div class="page-header">
+    <h2>Global Chat Lobby</h2>
+    <p>Connect with other CODM players instantly.</p>
+</div>
+
+<div class="chat-board">
+    <!-- Chat dikhane ka Box (Yahan loop add kar diya hai) -->
+    <div class="chat-messages" id="chat-box" style="height: 400px; overflow-y: auto; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; margin-bottom: 15px;">
+        
+        <!-- GO TEMPLATE LOOP -->
+        {{range .}}
+            <div class="msg" style="margin-bottom: 8px;">
+                <!-- Global chat me thoda alag color de diya username ko -->
+                <span class="user" style="font-weight: bold; color: #28a745;">{{.Username}}:</span> 
+                {{.Message}}
+            </div>
+        {{else}}
+            <div class="msg">
+                <span class="user" style="font-weight: bold; color: #555;">System:</span> 
+                Welcome to the Global Chat! Abhi koi message nahi aaya, start writing.
+            </div>
+        {{end}}
+
+    </div>
+
+    <!-- Chat bhejne ka Form -->
+    <form action="/chat/send" method="POST" class="chat-input-area">
+        <input type="text" name="message" placeholder="Type a message..." required style="width: 80%; padding: 10px;">
+        
+        <!-- YEH LINE PERFECT HAI: Backend ko "home" room jayega -->
+        <input type="hidden" name="room" value="home">
+        
+        <button type="submit" class="btn" style="padding: 10px 20px;">Send</button>
+    </form>
+</div>
+{{end}}

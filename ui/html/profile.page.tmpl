@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}My Profile{{end}}
+{{define "body"}}
+<div class="page-header">
+    <h2>Player Profile</h2>
+    <p>Set up your identity before searching for a team.</p>
+</div>
+<div class="form-container">
+    <form action="/profile" method="POST">
+        <div class="input-group">
+            <label>In-Game Name (IGN)</label>
+            <input type="text" name="game_name" placeholder="e.g. Ghost_Rider" required style="padding: 15px; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 4px; margin-bottom: 15px;">
+        </div>
+        <div class="input-group">
+            <label>Player UID</label>
+            <input type="number" name="uid" placeholder="Enter your UID number" required style="padding: 15px; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 4px; margin-bottom: 25px;">
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Save Profile Info</button>
+    </form>
+</div>
+{{end}}

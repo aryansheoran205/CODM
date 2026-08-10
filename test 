@@ -1,0 +1,43 @@
+-- 1. Naya Database Banao
+CREATE DATABASE codm_hub CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE codm_hub;
+
+-- 2. Users Table (Login / Signup ke liye)
+CREATE TABLE users (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    hashed_password CHAR(60) NOT NULL,
+    created DATETIME NOT NULL
+);
+
+-- 3. Team Up Table (Chat aur Squad dhoondhne ke liye)
+CREATE TABLE team_up_messages (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_name VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    created DATETIME NOT NULL
+);
+
+-- 4. Events Table (Admin images upload karega uske liye)
+CREATE TABLE events (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    created DATETIME NOT NULL
+);
+
+-- 5. Reports & Suggestions Table (Bug/Player report aur image upload ke liye)
+CREATE TABLE user_reports (
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    report_type VARCHAR(50) NOT NULL, -- 'bug', 'player', ya 'suggestion'
+    description TEXT NOT NULL,
+    image_path VARCHAR(255), -- Agar user ne koi screenshot upload kiya hai
+    created DATETIME NOT NULL
+);
+    
+    -- 6. Ek Naya Database User Banao (Security ke liye)
+CREATE USER 'codm_web'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON codm_hub.* TO 'codm_web'@'localhost';
+ALTER USER 'codm_web'@'localhost' IDENTIFIED BY 'p

@@ -1,0 +1,147 @@
+{{template "base" .}}
+
+{{define "title"}}Gunsmith Categories{{end}}
+
+{{define "body"}}
+<!-- CSS for Premium Tactical UI -->
+<style>
+    .gunsmith-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .page-header h2 {
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: #ffffff;
+        margin-bottom: 10px;
+        font-size: 2rem;
+    }
+    .page-header p {
+        color: #aaaaaa;
+        font-size: 1.1rem;
+    }
+    
+    /* Responsive Grid Layout */
+    .gunsmith-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    
+    /* Tactical Card Design */
+    .gunsmith-card {
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid #333;
+        padding: 30px 20px;
+        border-radius: 10px;
+        text-align: center;
+        background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Top glowing line effect on hover */
+    .gunsmith-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: #f39c12; /* Tera orange theme color */
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    
+    .gunsmith-card:hover {
+        border-color: #444;
+        box-shadow: 0 10px 25px rgba(243, 156, 18, 0.15);
+        transform: translateY(-7px);
+    }
+    
+    .gunsmith-card:hover::before {
+        transform: scaleX(1);
+    }
+    
+    .gunsmith-card h3 {
+        margin: 0 0 12px 0;
+        font-size: 1.5rem;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .gunsmith-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #888888;
+    }
+
+    .btn-back {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #f39c12;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s;
+    }
+    
+    .btn-back:hover {
+        color: #ffffff;
+    }
+</style>
+
+<div class="gunsmith-container">
+    <!-- Navigation -->
+    <a href="/" class="btn-back">← Back to Home</a>
+
+    <div class="page-header">
+        <h2>Gunsmith Categories</h2>
+        <p>Select a weapon class to view the best meta loadouts.</p>
+        <hr style="border-color: #333; margin-top: 20px; width: 50%;">
+    </div>
+
+    <!-- Category Grid -->
+    <div class="gunsmith-grid">
+        
+        <a href="/gunsmith/assault" class="gunsmith-card">
+            <h3>Assault</h3>
+            <p>Versatile & Reliable Rifles</p>
+        </a>
+
+        <a href="/gunsmith/smg" class="gunsmith-card">
+            <h3>SMG</h3>
+            <p>Fast Fire Rate & Mobility</p>
+        </a>
+
+        <a href="/gunsmith/sniper" class="gunsmith-card">
+            <h3>Sniper</h3>
+            <p>Long Range, One Shot Kill</p>
+        </a>
+
+        <a href="/gunsmith/lmg" class="gunsmith-card">
+            <h3>LMG</h3>
+            <p>Heavy Suppressive Fire</p>
+        </a>
+
+        <a href="/gunsmith/shotgun" class="gunsmith-card">
+            <h3>Shotgun</h3>
+            <p>Devastating Close Quarters</p>
+        </a>
+
+        <a href="/gunsmith/marksman" class="gunsmith-card">
+            <h3>Marksman</h3>
+            <p>Tactical Precision Rifles</p>
+        </a>
+
+    </div>
+</div>
+{{end}}

@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}Report Player{{end}}
+{{define "body"}}
+<div class="page-header">
+    <h2>Report a Player</h2>
+    <p>Encountered a hacker or toxic player? Submit their UID and proof.</p>
+</div>
+<div class="form-container">
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <div class="input-group">
+            <label>Player UID & Reason</label>
+            <textarea placeholder="Provide UID and describe what happened..." rows="5" required></textarea>
+        </div>
+        <div class="input-group">
+            <label>Screenshot / Video Proof</label>
+            <input type="file" accept="image/*,video/*">
+        </div>
+        <button type="submit" class="btn">Submit Report</button>
+    </form>
+</div>
+{{end}}
