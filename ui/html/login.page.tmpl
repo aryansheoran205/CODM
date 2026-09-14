@@ -1,0 +1,25 @@
+{{define "title"}}Login - CODM Hub{{end}}
+
+{{define "body"}}
+<div class="form-container" style="max-width: 400px; margin: 40px auto; background: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #333; color: #fff;">
+    <h2 style="margin-bottom: 20px; color: #ff4655; text-align: center;">🔑 Login to CODM Hub</h2>
+    
+    <form action="/login" method="POST">
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email</label>
+            <input type="email" name="email" required style="width: 100%; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Password</label>
+            <input type="password" name="password" required style="width: 100%; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px;">
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 12px; background: #ff4655; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem;">Login</button>
+    </form>
+    
+    <p style="margin-top: 15px; text-align: center; font-size: 0.9rem; color: #aaa;">
+       new user <a href="/register" style="color: #ff4655; text-decoration: none;"> 1st Register </a>
+    </p>
+</div>
+{{end}}

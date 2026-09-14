@@ -8,7 +8,7 @@ body {
     background-color: #0a0a0a;
     color: #e0e0e0;
     font-family: 'Rajdhani', sans-serif;
-    display: flex; /* Sidebar aur content ko side-by-side karne ke liye */
+    display: flex;
 }
 
 /* --- 1. LEFT SIDEBAR DESIGN --- */
@@ -103,7 +103,7 @@ body {
 
 /* --- 2. MAIN CONTENT AREA --- */
 .main-wrapper {
-    margin-left: 260px; /* Sidebar ke liye space chhodne ke liye */
+    margin-left: 260px;
     width: calc(100% - 260px);
     min-height: 100vh;
 }
@@ -225,6 +225,8 @@ body {
     overflow: hidden;
     transition: 0.3s;
     cursor: pointer;
+    text-decoration: none;
+    display: block;
 }
 
 .gun-card:hover {
